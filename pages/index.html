@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt Home Clone</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #1e1e1e;
+    }
+
+    .header {
+      background-color: white;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .navbar a {
+      color: #1e1e1e;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover, .navbar a.active {
+      color: #e30613;
+    }
+
+    .header-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 400px;
+      background-color: #fff;
+    }
+
+    .search-bar input {
+      padding: 8px 12px;
+      border: none;
+      outline: none;
+      flex: 1;
+    }
+
+    .search-bar i {
+      padding: 8px;
+      background-color: #ddd;
+      color: #1e1e1e;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .search-bar i:hover {
+      background-color: #e30613;
+      color: white;
+    }
+
+    .icons {
+      display: flex;
+      margin-left: 20px;
+    }
+
+    .icons button {
+      background-color: white;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      font-size: 20px;
+      margin-left: 15px;
+      color: #1e1e1e;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .icons button:hover {
+      background-color: #f1f1f1;
+    }
+
+    .hero {
+      background-color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+      color: #1e1e1e;
+    }
+
+    .featured-products {
+      padding: 40px 20px;
+      background-color: #ffffff;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .product-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 5px;
+    }
+
+    .product-card h3 {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .product-card p {
+      font-weight: bold;
+      color: #e30613;
+    }
+
+    .product-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  flex-wrap: wrap; /* Butonların taşmaması için ekliyoruz */
+}
+
+    .product-actions button {
+  background-color: #e30613;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex; /* Butonları düzgün hizalamak için inline-flex */
+  align-items: center;
+  gap: 5px;
+  width: 100%; /* Butonlar küçük ekranlarda tam genişlikte olsun */
+  box-sizing: border-box; /* Padding'lerin butonun boyutuna dahil edilmesi için */
+}
+
+    .product-actions button i {
+  font-size: 16px;
+}
+
+    .product-actions button:hover {
+      background-color: #f1f1f1;
+      color: #e30613;
+    }
+
+    .product-actions button:hover i {
+      color: #e30613;
+    }
+
+    .footer {
+      background-color: #1e1e1e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="/assets/logo.svg" alt="Kontakt Home Logo" />
+    </div>
+    <nav class="navbar">
+      <a href="#" onclick="setActive(this)">Ana Səhifə</a>
+      <a href="#phones" onclick="setActive(this)">Telefonlar</a>
+      <a href="#computers" onclick="setActive(this)">Kompüterlər</a>
+    </nav>
+  </header>
+
+  <div class="header-bottom">
+    <div class="search-bar">
+      <input type="text" placeholder="Axtar..." />
+      <i class="fas fa-search"></i>
+    </div>
+
+    <div class="icons">
+      <button onclick="addToFavorites()">
+        <i class="fas fa-heart"></i>
+      </button>
+      <button onclick="addToCart()">
+        <i class="fas fa-shopping-cart"></i>
+      </button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <h1>Ən Yeni Telefon və Kompüter Modelləri</h1>
+    <p>Ən sərfəli qiymətlərlə</p>
+  </section>
+
+  <section class="featured-products">
+    <h2>Seçilmiş Məhsullar</h2>
+
+    <div class="phone-products" id="phones">
+      <h3>Telefonlar</h3>
+      <div class="product-grid" id="phoneGrid">
+        <!-- Telefonlar JS ilə eklenecek -->
+      </div>
+    </div>
+
+    <div class="computer-products" id="computers">
+      <h3>Kompüterlər</h3>
+      <div class="product-grid" id="computerGrid">
+        <!-- Kompüterlər JS ilə eklenecek -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Kontakt Home Clone</p>
+  </footer>
+
+  <script>
+  const phones = [
+  {
+    id: 1,
+    name: "iPhone 13",
+    price: "2,299 ₼",
+    screen: "6.1\" Super Retina XDR",
+    processor: "A15 Bionic",
+    ram: "8 GB",
+    storage: "128 GB daxili",
+    camera: "12 MP arxa, 12 MP ön",
+    battery: "3240 mAh",
+    os: "iOS 15",
+    network: "5G"
+  },
+  {
+    id: 2,
+    name: "Samsung Galaxy S22",
+    price: "1,999 ₼",
+    screen: "6.1\" Dynamic AMOLED 2X",
+    processor: "Exynos 2200 / Snapdragon 8 Gen 1",
+    ram: "12 GB",
+    storage: "256 GB daxili",
+    camera: "50 MP arxa, 10 MP ön",
+    battery: "3700 mAh",
+    os: "Android 12 (One UI 4.1)",
+    network: "5G"
+  },
+  {
+    id: 3,
+    name: "Xiaomi Mi 11",
+    price: "1,899 ₼",
+    screen: "6.81\" AMOLED, 1440x3200",
+    processor: "Qualcomm Snapdragon 888",
+    ram: "8 GB",
+    storage: "128 GB daxili",
+    camera: "108 MP arxa, 20 MP ön",
+    battery: "4600 mAh",
+    os: "Android 11 (MIUI 12)",
+    network: "5G"
+  },
+  {
+    id: 4,
+    name: "Huawei P40 Pro",
+    price: "2,499 ₼",
+    screen: "6.58\" OLED, 1200x2640",
+    processor: "Kirin 990 5G",
+    ram: "8 GB",
+    storage: "256 GB daxili",
+    camera: "50 MP arxa, 32 MP ön",
+    battery: "4200 mAh",
+    os: "Android 10 (EMUI 10)",
+    network: "5G"
+  }
+];
+
+    const computers = [
+  {
+    name: "HP Laptop 15s",
+    price: "1,499 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/75942/hp-laptop-15s-intel.webp",
+    display: "13.3",
+    os: "Windows",
+    ram: "8 GB",
+    ssd: "256 GB"
+  },
+  {
+    name: "Lenovo IdeaPad 3",
+    price: "1,399 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/74652/lenovo-ideapad-3-laptop.webp",
+    display: "15.6",
+    os: "Windows",
+    ram: "8 GB",
+    ssd: "512 GB"
+  },
+  {
+    name: "MacBook Pro 13-inch",
+    price: "3,499 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/74312/macbook-pro-13-2020.webp",
+    display: "13.3",
+    os: "macOS",
+    ram: "16 GB",
+    ssd: "512 GB"
+  },
+  {
+    name: "Dell Inspiron 15",
+    price: "1,799 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/75233/dell-inspiron-15-2021.webp",
+    display: "15.6",
+    os: "Windows",
+    ram: "8 GB",
+    ssd: "256 GB"
+  },
+  {
+    name: "Asus ZenBook 14",
+    price: "2,199 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/75477/asus-zenbook-14.webp",
+    display: "14.0",
+    os: "Windows",
+    ram: "16 GB",
+    ssd: "512 GB"
+  },
+  {
+    name: "Acer Aspire 5",
+    price: "1,699 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/75564/acer-aspire-5.webp",
+    display: "15.6",
+    os: "Windows",
+    ram: "8 GB",
+    ssd: "512 GB"
+  },
+  {
+    name: "MSI GF63 Thin",
+    price: "1,899 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/75812/msi-gf63-thin.webp",
+    display: "15.6",
+    os: "Windows",
+    ram: "16 GB",
+    ssd: "512 GB"
+  },
+  {
+    name: "Razer Blade 15",
+    price: "4,199 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/74932/razer-blade-15.webp",
+    display: "15.6",
+    os: "Windows",
+    ram: "16 GB",
+    ssd: "1 TB"
+  },
+  {
+    name: "Huawei MateBook D15",
+    price: "1,599 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/75692/huawei-matebook-d15.webp",
+    display: "15.6",
+    os: "Windows",
+    ram: "8 GB",
+    ssd: "256 GB"
+  },
+  {
+    name: "Apple MacBook Air",
+    price: "2,899 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/74481/macbook-air.webp",
+    display: "13.3",
+    os: "macOS",
+    ram: "8 GB",
+    ssd: "256 GB"
+  }
+];
+
+
+  function displayProducts() {
+  const phoneGrid = document.getElementById('phoneGrid');
+  const computerGrid = document.getElementById('computerGrid');
+
+  phones.forEach((phone) => {
+    const phoneCard = document.createElement('div');
+    phoneCard.classList.add('product-card');
+
+    phoneCard.innerHTML = `
+      <img src="https://via.placeholder.com/400x400?text=${phone.name}" alt="${phone.name}" />
+      <h3>${phone.name}</h3>
+      <p>${phone.price}</p>
+      <div class="product-actions">
+        <button onclick="window.location.href='phone_product.html?id=${phone.id}'">
+          <i class="fas fa-info-circle"></i> Ətraflı
+        </button>
+        <button onclick="addToCart()">
+          <i class="fas fa-cart-plus"></i> Sepete Əlavə et
+        </button>
+      </div>
+    `;
+    phoneGrid.appendChild(phoneCard);
+  });
+
+  computers.forEach((computer) => {
+    const computerCard = document.createElement('div');
+    computerCard.classList.add('product-card');
+
+    computerCard.innerHTML = `
+      <img src="${computer.image}" alt="${computer.name}" />
+      <h3>${computer.name}</h3>
+      <p>${computer.price}</p>
+      <div class="product-actions">
+        <button onclick="viewDetails('${computer.name}')">
+          <i class="fas fa-info-circle"></i> Ətraflı
+        </button>
+        <button onclick="addToCart()">
+          <i class="fas fa-cart-plus"></i> Sepete Əlavə et
+        </button>
+      </div>
+    `;
+    computerGrid.appendChild(computerCard);
+  });
+}
+    function viewDetails(product) {
+      localStorage.setItem("selectedPhone", JSON.stringify(product));
+      window.location.href = "phone_product.html";
+    }
+
+    function addToCart(productName) {
+      alert(`${productName} səbətə əlavə edildi!`);
+    }
+
+    function addToFavorites(productName) {
+      alert(`${productName} bəyəndiniz!`);
+    }
+
+    window.onload = function() {
+  displayProducts();
+};
+  </script>
+</body>
+</html>

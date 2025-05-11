@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Telefon Məhsulu - Kontakt Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #e00027;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container, .phone-info {
+      width: 100%;
+      max-width: 1200px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .product-image {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .product-image img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .product-details {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .product-details h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .product-details p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .price {
+      font-size: 22px;
+      color: #e00027;
+      margin: 20px 0;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      background-color: #e00027;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .buttons button:hover {
+      background-color: #b5001f;
+    }
+
+    .phone-info {
+      padding: 30px;
+      box-sizing: border-box;
+    }
+
+    .phone-info h3 {
+      margin-top: 0;
+      color: #e00027;
+      font-size: 22px;
+    }
+
+    .phone-info ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .phone-info li {
+      font-size: 16px;
+      color: #444;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .phone-info li:last-child {
+      border-bottom: none;
+    }
+
+    footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Kontakt Home</h1>
+    <nav>
+      <a href="index.html">Əsas səhifə</a>
+      <a href="#">Telefonlar</a>
+      <a href="#">Noutbuklar</a>
+      <a href="#">Əlaqə</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="product-image">
+      <img id="product-img" alt="Telefon Şəkli" />
+    </div>
+    <div class="product-details">
+      <h2 id="product-title"></h2>
+      <p id="product-desc"></p>
+      <div class="price" id="product-price"></div>
+      <div class="buttons">
+        <button onclick="addToCart()">Səbətə at</button>
+        <button onclick="buyNow()">İndi al</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="phone-info">
+    <h3>Texniki Xüsusiyyətlər</h3>
+    <ul>
+      <li><strong>Ekran:</strong></li>
+      <li><strong>Prosessor:</strong></li>
+      <li><strong>RAM:</strong></li>
+      <li><strong>Yaddaş:</strong></li>
+      <li><strong>Kamera:</strong></li>
+      <li><strong>Batareya:</strong></li>
+      <li><strong>Əməliyyat sistemi:</strong></li>
+      <li><strong>Şəbəkə:</strong></li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 Kontakt Home Klonu. Bütün hüquqlar qorunur.
+  </footer>
+
+  <script>
+
+  const phones = [
+  {
+    id: 1,
+    name: "iPhone 13",
+    price: "2,299 ₼",
+    screen: "6.1\" Super Retina XDR",
+    processor: "A15 Bionic",
+    ram: "8 GB",
+    storage: "128 GB daxili",
+    camera: "12 MP arxa, 12 MP ön",
+    battery: "3240 mAh",
+    os: "iOS 15",
+    network: "5G"
+  },
+  {
+    id: 2,
+    name: "Samsung Galaxy S22",
+    price: "1,999 ₼",
+    screen: "6.1\" Dynamic AMOLED 2X",
+    processor: "Exynos 2200 / Snapdragon 8 Gen 1",
+    ram: "12 GB",
+    storage: "256 GB daxili",
+    camera: "50 MP arxa, 10 MP ön",
+    battery: "3700 mAh",
+    os: "Android 12 (One UI 4.1)",
+    network: "5G"
+  },
+  {
+    id: 3,
+    name: "Xiaomi Mi 11",
+    price: "1,899 ₼",
+    screen: "6.81\" AMOLED, 1440x3200",
+    processor: "Qualcomm Snapdragon 888",
+    ram: "8 GB",
+    storage: "128 GB daxili",
+    camera: "108 MP arxa, 20 MP ön",
+    battery: "4600 mAh",
+    os: "Android 11 (MIUI 12)",
+    network: "5G"
+  },
+  {
+    id: 4,
+    name: "Huawei P40 Pro",
+    price: "2,499 ₼",
+    screen: "6.58\" OLED, 1200x2640",
+    processor: "Kirin 990 5G",
+    ram: "8 GB",
+    storage: "256 GB daxili",
+    camera: "50 MP arxa, 32 MP ön",
+    battery: "4200 mAh",
+    os: "Android 10 (EMUI 10)",
+    network: "5G"
+  }
+];
+
+const urlParams = new URLSearchParams(window.location.search);
+const phoneId = urlParams.get('id');
+
+const phone = phones.find(p => p.id == phoneId);
+
+if (phone) {
+  document.getElementById("product-title").textContent = phone.name;
+  document.getElementById("product-desc").textContent = `Ekran: ${phone.screen}`;
+  document.getElementById("product-price").textContent = `${phone.price}`;
+  document.getElementById("product-img").src = `https://via.placeholder.com/400x400?text=${phone.name}`;
+
+  const phoneInfoList = document.querySelectorAll(".phone-info li");
+  phoneInfoList[0].textContent = `Ekran: ${phone.screen}`;
+  phoneInfoList[1].textContent = `Prosessor: ${phone.processor}`;
+  phoneInfoList[2].textContent = `RAM: ${phone.ram}`;
+  phoneInfoList[3].textContent = `Yaddaş: ${phone.storage}`;
+  phoneInfoList[4].textContent = `Kamera: ${phone.camera}`;
+  phoneInfoList[5].textContent = `Batareya: ${phone.battery}`;
+  phoneInfoList[6].textContent = `Əməliyyat sistemi: ${phone.os}`;
+  phoneInfoList[7].textContent = `Şəbəkə: ${phone.network}`;
+} else {
+  alert('Telefon yoxdu');
+}
+    
+    function addToCart() {
+      alert("Məhsul səbətə əlavə olundu!");
+    }
+
+    function buyNow() {
+      alert("Sifariş prosesi başladıldı.");
+    }
+  </script>
+
+</body>
+</html>
