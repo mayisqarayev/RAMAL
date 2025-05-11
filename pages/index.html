@@ -327,97 +327,60 @@
 
     const computers = [
   {
+    id: 1,
     name: "HP Laptop 15s",
     price: "1,499 ₼",
     image: "https://kontakt.az/resized/fit540x550/center/products/75942/hp-laptop-15s-intel.webp",
     display: "13.3",
+    processor: "Intel Core i7-8565U",
     os: "Windows",
     ram: "8 GB",
     ssd: "256 GB"
   },
   {
+    id: 2,
     name: "Lenovo IdeaPad 3",
     price: "1,399 ₼",
     image: "https://kontakt.az/resized/fit540x550/center/products/74652/lenovo-ideapad-3-laptop.webp",
     display: "15.6",
+    processor: "Intel Core i7-1165G7",
     os: "Windows",
     ram: "8 GB",
     ssd: "512 GB"
   },
   {
+    id: 3,
     name: "MacBook Pro 13-inch",
     price: "3,499 ₼",
     image: "https://kontakt.az/resized/fit540x550/center/products/74312/macbook-pro-13-2020.webp",
     display: "13.3",
+    processor: "Apple M1",
     os: "macOS",
     ram: "16 GB",
     ssd: "512 GB"
   },
   {
+    id: 4,
     name: "Dell Inspiron 15",
     price: "1,799 ₼",
     image: "https://kontakt.az/resized/fit540x550/center/products/75233/dell-inspiron-15-2021.webp",
     display: "15.6",
+    processor: "Intel Core i7-1185G7",
     os: "Windows",
     ram: "8 GB",
     ssd: "256 GB"
   },
   {
+    id: 5,
     name: "Asus ZenBook 14",
     price: "2,199 ₼",
     image: "https://kontakt.az/resized/fit540x550/center/products/75477/asus-zenbook-14.webp",
     display: "14.0",
+    processor: "Intel Core i7-1185G7",
     os: "Windows",
     ram: "16 GB",
     ssd: "512 GB"
-  },
-  {
-    name: "Acer Aspire 5",
-    price: "1,699 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/75564/acer-aspire-5.webp",
-    display: "15.6",
-    os: "Windows",
-    ram: "8 GB",
-    ssd: "512 GB"
-  },
-  {
-    name: "MSI GF63 Thin",
-    price: "1,899 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/75812/msi-gf63-thin.webp",
-    display: "15.6",
-    os: "Windows",
-    ram: "16 GB",
-    ssd: "512 GB"
-  },
-  {
-    name: "Razer Blade 15",
-    price: "4,199 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/74932/razer-blade-15.webp",
-    display: "15.6",
-    os: "Windows",
-    ram: "16 GB",
-    ssd: "1 TB"
-  },
-  {
-    name: "Huawei MateBook D15",
-    price: "1,599 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/75692/huawei-matebook-d15.webp",
-    display: "15.6",
-    os: "Windows",
-    ram: "8 GB",
-    ssd: "256 GB"
-  },
-  {
-    name: "Apple MacBook Air",
-    price: "2,899 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/74481/macbook-air.webp",
-    display: "13.3",
-    os: "macOS",
-    ram: "8 GB",
-    ssd: "256 GB"
-  }
-];
-
+  }];
 
   function displayProducts() {
   const phoneGrid = document.getElementById('phoneGrid');
@@ -452,7 +415,7 @@
       <h3>${computer.name}</h3>
       <p>${computer.price}</p>
       <div class="product-actions">
-        <button onclick="viewDetails('${computer.name}')">
+        <button onclick="window.location.href='computer_product.html?id=${computer.id}'">
           <i class="fas fa-info-circle"></i> Ətraflı
         </button>
         <button onclick="addToCart()">
@@ -463,10 +426,6 @@
     computerGrid.appendChild(computerCard);
   });
 }
-    function viewDetails(product) {
-      localStorage.setItem("selectedPhone", JSON.stringify(product));
-      window.location.href = "phone_product.html";
-    }
 
     function addToCart(productName) {
       alert(`${productName} səbətə əlavə edildi!`);

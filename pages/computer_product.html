@@ -152,7 +152,7 @@
 
   <div class="container">
     <div class="product-image">
-      <img id="product-img" alt="Telefon Şəkli" />
+      <img id="product-img" alt="Komputer Şəkli" />
     </div>
     <div class="product-details">
       <h2 id="product-title"></h2>
@@ -172,10 +172,7 @@
       <li><strong>Prosessor:</strong></li>
       <li><strong>RAM:</strong></li>
       <li><strong>Yaddaş:</strong></li>
-      <li><strong>Kamera:</strong></li>
-      <li><strong>Batareya:</strong></li>
       <li><strong>Əməliyyat sistemi:</strong></li>
-      <li><strong>Şəbəkə:</strong></li>
     </ul>
   </div>
 
@@ -185,83 +182,82 @@
 
   <script>
 
-  const phones = [
+  const computers = [
   {
     id: 1,
-    name: "iPhone 13",
-    price: "2,299 ₼",
-    screen: "6.1\" Super Retina XDR",
-    processor: "A15 Bionic",
+    name: "HP Laptop 15s",
+    price: "1,499 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/75942/hp-laptop-15s-intel.webp",
+    display: "13.3",
+    processor: "Intel Core i7-8565U",
+    os: "Windows",
     ram: "8 GB",
-    storage: "128 GB daxili",
-    camera: "12 MP arxa, 12 MP ön",
-    battery: "3240 mAh",
-    os: "iOS 15",
-    network: "5G"
+    ssd: "256 GB"
   },
   {
     id: 2,
-    name: "Samsung Galaxy S22",
-    price: "1,999 ₼",
-    screen: "6.1\" Dynamic AMOLED 2X",
-    processor: "Exynos 2200 / Snapdragon 8 Gen 1",
-    ram: "12 GB",
-    storage: "256 GB daxili",
-    camera: "50 MP arxa, 10 MP ön",
-    battery: "3700 mAh",
-    os: "Android 12 (One UI 4.1)",
-    network: "5G"
+    name: "Lenovo IdeaPad 3",
+    price: "1,399 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/74652/lenovo-ideapad-3-laptop.webp",
+    display: "15.6",
+    processor: "Intel Core i7-1165G7",
+    os: "Windows",
+    ram: "8 GB",
+    ssd: "512 GB"
   },
   {
     id: 3,
-    name: "Xiaomi Mi 11",
-    price: "1,899 ₼",
-    screen: "6.81\" AMOLED, 1440x3200",
-    processor: "Qualcomm Snapdragon 888",
-    ram: "8 GB",
-    storage: "128 GB daxili",
-    camera: "108 MP arxa, 20 MP ön",
-    battery: "4600 mAh",
-    os: "Android 11 (MIUI 12)",
-    network: "5G"
+    name: "MacBook Pro 13-inch",
+    price: "3,499 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/74312/macbook-pro-13-2020.webp",
+    display: "13.3",
+    processor: "Apple M1",
+    os: "macOS",
+    ram: "16 GB",
+    ssd: "512 GB"
   },
   {
     id: 4,
-    name: "Huawei P40 Pro",
-    price: "2,499 ₼",
-    screen: "6.58\" OLED, 1200x2640",
-    processor: "Kirin 990 5G",
+    name: "Dell Inspiron 15",
+    price: "1,799 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/75233/dell-inspiron-15-2021.webp",
+    display: "15.6",
+    processor: "Intel Core i7-1185G7",
+    os: "Windows",
     ram: "8 GB",
-    storage: "256 GB daxili",
-    camera: "50 MP arxa, 32 MP ön",
-    battery: "4200 mAh",
-    os: "Android 10 (EMUI 10)",
-    network: "5G"
-  }
-];
+    ssd: "256 GB"
+  },
+  {
+    id: 5,
+    name: "Asus ZenBook 14",
+    price: "2,199 ₼",
+    image: "https://kontakt.az/resized/fit540x550/center/products/75477/asus-zenbook-14.webp",
+    display: "14.0",
+    processor: "Intel Core i7-1185G7",
+    os: "Windows",
+    ram: "16 GB",
+    ssd: "512 GB"
+  }];
 
 const urlParams = new URLSearchParams(window.location.search);
-const phoneId = urlParams.get('id');
+const computerId = urlParams.get('id');
 
-const phone = phones.find(p => p.id == phoneId);
+const computer = computers.find(c => c.id == computerId);
 
-if (phone) {
-  document.getElementById("product-title").textContent = phone.name;
-  document.getElementById("product-desc").textContent = `Ekran: ${phone.screen}`;
-  document.getElementById("product-price").textContent = `${phone.price}`;
-  document.getElementById("product-img").src = `https://via.placeholder.com/400x400?text=${phone.name}`;
+if (computer) {
+  document.getElementById("product-title").textContent = computer.name;
+  document.getElementById("product-desc").textContent = `Ekran: ${computer.screen}`;
+  document.getElementById("product-price").textContent = `${computer.price}`;
+  document.getElementById("product-img").src = `https://via.placeholder.com/400x400?text=${computer.name}`;
 
   const phoneInfoList = document.querySelectorAll(".phone-info li");
-  phoneInfoList[0].textContent = `Ekran: ${phone.screen}`;
-  phoneInfoList[1].textContent = `Prosessor: ${phone.processor}`;
-  phoneInfoList[2].textContent = `RAM: ${phone.ram}`;
-  phoneInfoList[3].textContent = `Yaddaş: ${phone.storage}`;
-  phoneInfoList[4].textContent = `Kamera: ${phone.camera}`;
-  phoneInfoList[5].textContent = `Batareya: ${phone.battery}`;
-  phoneInfoList[6].textContent = `Əməliyyat sistemi: ${phone.os}`;
-  phoneInfoList[7].textContent = `Şəbəkə: ${phone.network}`;
+  phoneInfoList[0].textContent = `Ekran: ${computer.display}`;
+  phoneInfoList[1].textContent = `Prosessor: ${computer.processor}`;
+  phoneInfoList[2].textContent = `RAM: ${computer.ram}`;
+  phoneInfoList[3].textContent = `Yaddaş: ${computer.ssd}`;
+  phoneInfoList[4].textContent = `Əməliyyat sistemi: ${computer.os}`;
 } else {
-  alert('Telefon yoxdu');
+  alert('Komputer yoxdu');
 }
     
     function addToCart() {
