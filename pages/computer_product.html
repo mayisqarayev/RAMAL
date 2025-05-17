@@ -11,29 +11,30 @@
       background-color: #f5f5f5;
     }
 
-    header {
-      background-color: #e00027;
+    .header {
+      background-color: white;
       color: white;
-      padding: 15px 30px;
+      padding: 15px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
     }
 
-    header h1 {
-      font-size: 24px;
-      margin: 0;
+    .logo img {
+      height: 40px;
     }
 
-    nav a {
-      color: white;
+    .navbar a {
+      color: #1e1e1e;
       margin-left: 20px;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    .navbar a:hover, .navbar a.active {
+      color: #e30613;
     }
 
     .container, .phone-info {
@@ -140,13 +141,14 @@
 </head>
 <body>
 
-  <header>
-    <h1>Kontakt Home</h1>
-    <nav>
-      <a href="index.html">Əsas səhifə</a>
-      <a href="#">Telefonlar</a>
-      <a href="#">Noutbuklar</a>
-      <a href="#">Əlaqə</a>
+  <header class="header">
+    <div class="logo">
+      <img src="/assets/logo.svg" alt="Kontakt Home Logo" />
+    </div>
+    <nav class="navbar">
+      <a href="#" onclick="setActive(this)">Ana Səhifə</a>
+      <a href="#phones" onclick="setActive(this)">Telefonlar</a>
+      <a href="#computers" onclick="setActive(this)">Kompüterlər</a>
     </nav>
   </header>
 
@@ -187,7 +189,7 @@
     id: 1,
     name: "HP Laptop 15s",
     price: "1,499 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/75942/hp-laptop-15s-intel.webp",
+    image: "/assets/HP.jpg",
     display: "13.3",
     processor: "Intel Core i7-8565U",
     os: "Windows",
@@ -198,7 +200,7 @@
     id: 2,
     name: "Lenovo IdeaPad 3",
     price: "1,399 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/74652/lenovo-ideapad-3-laptop.webp",
+    image: "/assets/lenovo.jpeg",
     display: "15.6",
     processor: "Intel Core i7-1165G7",
     os: "Windows",
@@ -209,7 +211,7 @@
     id: 3,
     name: "MacBook Pro 13-inch",
     price: "3,499 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/74312/macbook-pro-13-2020.webp",
+    image: "/assets/mac.jpg",
     display: "13.3",
     processor: "Apple M1",
     os: "macOS",
@@ -220,7 +222,7 @@
     id: 4,
     name: "Dell Inspiron 15",
     price: "1,799 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/75233/dell-inspiron-15-2021.webp",
+    image: "/assets/dekk.jpeg",
     display: "15.6",
     processor: "Intel Core i7-1185G7",
     os: "Windows",
@@ -231,7 +233,7 @@
     id: 5,
     name: "Asus ZenBook 14",
     price: "2,199 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/75477/asus-zenbook-14.webp",
+    image: "/assets/asus.jpg",
     display: "14.0",
     processor: "Intel Core i7-1185G7",
     os: "Windows",
@@ -248,7 +250,7 @@ if (computer) {
   document.getElementById("product-title").textContent = computer.name;
   document.getElementById("product-desc").textContent = `Ekran: ${computer.screen}`;
   document.getElementById("product-price").textContent = `${computer.price}`;
-  document.getElementById("product-img").src = `https://via.placeholder.com/400x400?text=${computer.name}`;
+  document.getElementById("product-img").src = `${computer.image}`;
 
   const phoneInfoList = document.querySelectorAll(".phone-info li");
   phoneInfoList[0].textContent = `Ekran: ${computer.display}`;

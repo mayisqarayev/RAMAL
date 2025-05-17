@@ -190,12 +190,16 @@
   box-sizing: border-box; /* Padding'lerin butonun boyutuna dahil edilmesi için */
 }
 
+  .product-actions button:last-child {
+    margin-top: 5px;
+  }
+
     .product-actions button i {
   font-size: 16px;
 }
 
     .product-actions button:hover {
-      background-color: #f1f1f1;
+      background-color: #e1e1e1;
       color: #e30613;
     }
 
@@ -233,7 +237,7 @@
     </div>
 
     <div class="icons">
-      <button onclick="addToFavorites()">
+      <button onclick="toFavorites()">
         <i class="fas fa-heart"></i>
       </button>
       <button onclick="addToCart()">
@@ -253,14 +257,14 @@
     <div class="phone-products" id="phones">
       <h3>Telefonlar</h3>
       <div class="product-grid" id="phoneGrid">
-        <!-- Telefonlar JS ilə eklenecek -->
+        
       </div>
     </div>
 
     <div class="computer-products" id="computers">
       <h3>Kompüterlər</h3>
       <div class="product-grid" id="computerGrid">
-        <!-- Kompüterlər JS ilə eklenecek -->
+        
       </div>
     </div>
   </section>
@@ -275,6 +279,7 @@
     id: 1,
     name: "iPhone 13",
     price: "2,299 ₼",
+    image: "/assets/iphone13.jpg",
     screen: "6.1\" Super Retina XDR",
     processor: "A15 Bionic",
     ram: "8 GB",
@@ -288,6 +293,7 @@
     id: 2,
     name: "Samsung Galaxy S22",
     price: "1,999 ₼",
+    image: "/assets/Galaxy-S22.jpg",
     screen: "6.1\" Dynamic AMOLED 2X",
     processor: "Exynos 2200 / Snapdragon 8 Gen 1",
     ram: "12 GB",
@@ -301,6 +307,7 @@
     id: 3,
     name: "Xiaomi Mi 11",
     price: "1,899 ₼",
+    image: "/assets/mi11.png",
     screen: "6.81\" AMOLED, 1440x3200",
     processor: "Qualcomm Snapdragon 888",
     ram: "8 GB",
@@ -314,6 +321,7 @@
     id: 4,
     name: "Huawei P40 Pro",
     price: "2,499 ₼",
+    image: "/assets/P40.jpeg",
     screen: "6.58\" OLED, 1200x2640",
     processor: "Kirin 990 5G",
     ram: "8 GB",
@@ -330,7 +338,7 @@
     id: 1,
     name: "HP Laptop 15s",
     price: "1,499 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/75942/hp-laptop-15s-intel.webp",
+    image: "/assets/HP.jpg",
     display: "13.3",
     processor: "Intel Core i7-8565U",
     os: "Windows",
@@ -341,7 +349,7 @@
     id: 2,
     name: "Lenovo IdeaPad 3",
     price: "1,399 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/74652/lenovo-ideapad-3-laptop.webp",
+    image: "/assets/lenovo.jpeg",
     display: "15.6",
     processor: "Intel Core i7-1165G7",
     os: "Windows",
@@ -352,7 +360,7 @@
     id: 3,
     name: "MacBook Pro 13-inch",
     price: "3,499 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/74312/macbook-pro-13-2020.webp",
+    image: "/assets/mac.jpg",
     display: "13.3",
     processor: "Apple M1",
     os: "macOS",
@@ -363,7 +371,7 @@
     id: 4,
     name: "Dell Inspiron 15",
     price: "1,799 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/75233/dell-inspiron-15-2021.webp",
+    image: "/assets/dekk.jpeg",
     display: "15.6",
     processor: "Intel Core i7-1185G7",
     os: "Windows",
@@ -374,7 +382,7 @@
     id: 5,
     name: "Asus ZenBook 14",
     price: "2,199 ₼",
-    image: "https://kontakt.az/resized/fit540x550/center/products/75477/asus-zenbook-14.webp",
+    image: "/assets/asus.jpg",
     display: "14.0",
     processor: "Intel Core i7-1185G7",
     os: "Windows",
@@ -391,7 +399,7 @@
     phoneCard.classList.add('product-card');
 
     phoneCard.innerHTML = `
-      <img src="https://via.placeholder.com/400x400?text=${phone.name}" alt="${phone.name}" />
+      <img src="${phone.image}" alt="${phone.name}" />
       <h3>${phone.name}</h3>
       <p>${phone.price}</p>
       <div class="product-actions">
@@ -438,6 +446,10 @@
     window.onload = function() {
   displayProducts();
 };
+
+function toFavorites() {
+  window.location.href = "favorites.html"
+}
   </script>
 </body>
 </html>
